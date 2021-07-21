@@ -7,12 +7,12 @@ ENV CGO_ENABLED=0 \
 WORKDIR /src/
 
 # Retrieve all packages
-COPY go.mod .
-COPY go.sum .
+COPY ./src/go.mod .
+COPY ./src/go.sum .
 RUN go mod download
 
 # Build the application
-COPY . .
+COPY ./src/ .
 RUN go build -o app /src/main.go
 
 FROM alpine:latest
